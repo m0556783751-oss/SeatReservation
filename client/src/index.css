@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background: #fff;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+input, button {
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+input {
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #555;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+a {
+  color: #4CAF50;
+}

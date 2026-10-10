@@ -1,0 +1,33 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## User Secrets
+secrets.json
+
+## NLog logs
+logs/
+
+## IDE
+.vs/
+.vscode/
+.idea/
+*.swp
+
+## OS
+Thumbs.db
+.DS_Store
+
+## Node (React client)
+client/node_modules/
+client/dist/
+
+## Template project
+Mally Wallach/
+
+## Claude Code
+.claude/

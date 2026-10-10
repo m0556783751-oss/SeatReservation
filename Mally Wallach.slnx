@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="SeatReservation.API/SeatReservation.API.csproj" />
+  <Project Path="SeatReservation.Core/SeatReservation.Core.csproj" />
+  <Project Path="SeatReservation.Data/SeatReservation.Data.csproj" />
+  <Project Path="SeatReservation.Service/SeatReservation.Service.csproj" />
+  <Project Path="SeatReservation.Tests/SeatReservation.Tests.csproj" />
+</Solution>
