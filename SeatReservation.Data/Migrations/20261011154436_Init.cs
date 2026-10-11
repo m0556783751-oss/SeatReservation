@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -17,9 +18,9 @@ namespace SeatReservation.Data.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,12 +31,12 @@ namespace SeatReservation.Data.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FullName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Role = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    FullName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    PasswordHash = table.Column<string>(type: "text", nullable: false),
+                    Role = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,10 +47,10 @@ namespace SeatReservation.Data.Migrations
                 name: "Venues",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    Address = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,12 +61,12 @@ namespace SeatReservation.Data.Migrations
                 name: "Events",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    VenueId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Title = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: false),
+                    Description = table.Column<string>(type: "character varying(2000)", maxLength: 2000, nullable: false),
+                    Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    VenueId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -82,12 +83,12 @@ namespace SeatReservation.Data.Migrations
                 name: "Seats",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Row = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    Number = table.Column<int>(type: "int", nullable: false),
-                    Section = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    VenueId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Row = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
+                    Number = table.Column<int>(type: "integer", nullable: false),
+                    Section = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    VenueId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -104,8 +105,8 @@ namespace SeatReservation.Data.Migrations
                 name: "EventCategories",
                 columns: table => new
                 {
-                    CategoriesId = table.Column<int>(type: "int", nullable: false),
-                    EventsId = table.Column<int>(type: "int", nullable: false)
+                    CategoriesId = table.Column<int>(type: "integer", nullable: false),
+                    EventsId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -128,14 +129,14 @@ namespace SeatReservation.Data.Migrations
                 name: "Reservations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ReservedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    EventId = table.Column<int>(type: "int", nullable: false),
-                    SeatId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    ReservedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
+                    EventId = table.Column<int>(type: "integer", nullable: false),
+                    SeatId = table.Column<int>(type: "integer", nullable: false),
+                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    xmin = table.Column<uint>(type: "xid", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -165,10 +166,10 @@ namespace SeatReservation.Data.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Concert" },
-                    { 2, "Theater" },
-                    { 3, "Conference" },
-                    { 4, "Sports" }
+                    { 1, "Music" },
+                    { 2, "Shiur" },
+                    { 3, "Celebration" },
+                    { 4, "Community" }
                 });
 
             migrationBuilder.InsertData(
@@ -176,8 +177,8 @@ namespace SeatReservation.Data.Migrations
                 columns: new[] { "Id", "Email", "FullName", "PasswordHash", "Role" },
                 values: new object[,]
                 {
-                    { 1, "admin@seat.com", "Admin User", "$2a$11$iF5yTmk1YCs5d7deOU7OGeBFx4kzH.kzHJBHsI9b/NGYQ0PJJvwJ2", 1 },
-                    { 2, "customer@seat.com", "Demo Customer", "$2a$11$51vXkQFEOjgNYOFpqRtAOuIWNr2dG.YyFosdHq6WEQ26p1Ss94xm2", 0 }
+                    { 1, "admin@seat.com", "Admin User", "$2a$11$v.OuuWgV6t7yX5Scu2ZT8./AA.RjA8FB3NU2zrLh.XYrtyHJqXRvO", 1 },
+                    { 2, "customer@seat.com", "Demo Customer", "$2a$11$6ilU9jcrsDjapKmIR0X16e5fQGbEIXV.USewi2E.pM.ydA8ipd7RW", 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -185,8 +186,8 @@ namespace SeatReservation.Data.Migrations
                 columns: new[] { "Id", "Address", "Name" },
                 values: new object[,]
                 {
-                    { 1, "123 Main St", "Main Hall" },
-                    { 2, "456 Oak Ave", "Small Theater" }
+                    { 1, "12 Rabbi Akiva St, Bnei Brak", "Heichal HaSimcha" },
+                    { 2, "5 HaRav Shach St, Jerusalem", "Ulam Beit Yaakov" }
                 });
 
             migrationBuilder.InsertData(
@@ -194,9 +195,11 @@ namespace SeatReservation.Data.Migrations
                 columns: new[] { "Id", "Date", "Description", "Title", "VenueId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 3, 15, 20, 0, 0, 0, DateTimeKind.Utc), "Live rock concert", "Rock Night", 1 },
-                    { 2, new DateTime(2025, 3, 20, 19, 0, 0, 0, DateTimeKind.Utc), "Hamlet performance", "Shakespeare Evening", 2 },
-                    { 3, new DateTime(2025, 4, 10, 9, 0, 0, 0, DateTimeKind.Utc), "Annual developer meetup", "Tech Conference 2025", 1 }
+                    { 1, new DateTime(2025, 6, 15, 19, 0, 0, 0, DateTimeKind.Utc), "Grand celebration marking the completion of the Talmud cycle", "Siyum HaShas Celebration", 1 },
+                    { 2, new DateTime(2025, 7, 5, 21, 0, 0, 0, DateTimeKind.Utc), "An evening of Hasidic music and inspiration featuring Mordechai Ben David", "Melaveh Malkah with MBD", 1 },
+                    { 3, new DateTime(2025, 6, 22, 20, 0, 0, 0, DateTimeKind.Utc), "Halacha lecture on the laws of Shabbat", "Shiur by Rav Zilberstein", 2 },
+                    { 4, new DateTime(2025, 10, 8, 18, 0, 0, 0, DateTimeKind.Utc), "A joyful family concert for Chol HaMoed Sukkot with Avraham Fried", "Chol HaMoed Family Concert", 1 },
+                    { 5, new DateTime(2025, 8, 10, 17, 0, 0, 0, DateTimeKind.Utc), "Community celebration for the inauguration of a new Torah scroll", "Hachnasat Sefer Torah", 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -262,6 +265,21 @@ namespace SeatReservation.Data.Migrations
                     { 56, 4, "C", "Back", 2 },
                     { 57, 5, "C", "Back", 2 },
                     { 58, 6, "C", "Back", 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "EventCategories",
+                columns: new[] { "CategoriesId", "EventsId" },
+                values: new object[,]
+                {
+                    { 1, 2 },
+                    { 1, 4 },
+                    { 2, 3 },
+                    { 3, 1 },
+                    { 3, 5 },
+                    { 4, 1 },
+                    { 4, 4 },
+                    { 4, 5 }
                 });
 
             migrationBuilder.CreateIndex(

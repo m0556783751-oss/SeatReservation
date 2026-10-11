@@ -76,7 +76,7 @@ namespace SeatReservation.Data
             // Reservation — the concurrency-protected entity
             modelBuilder.Entity<Reservation>(e =>
             {
-                e.Property(r => r.RowVersion).IsRowVersion();
+                e.UseXminAsConcurrencyToken();
                 e.HasOne(r => r.Event)
                     .WithMany(ev => ev.Reservations)
                     .HasForeignKey(r => r.EventId)

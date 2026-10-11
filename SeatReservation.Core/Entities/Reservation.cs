@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using SeatReservation.Core.Enums;
 
 namespace SeatReservation.Core.Entities
@@ -17,8 +16,5 @@ namespace SeatReservation.Core.Entities
 
         public int UserId { get; set; }
         public User User { get; set; } = null!;
-
-        [Timestamp]
-        public byte[] RowVersion { get; set; } = default!;
     }
 }
