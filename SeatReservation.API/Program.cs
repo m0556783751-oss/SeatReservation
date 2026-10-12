@@ -56,6 +56,7 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 // JWT Authentication
 var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")
     ?? builder.Configuration["Jwt:Key"]!;
+builder.Configuration["Jwt:Key"] = jwtKey;
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
