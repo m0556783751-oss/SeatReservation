@@ -232,7 +232,7 @@ namespace SeatReservation.Data.Migrations
 
                     b.HasIndex("SeatId", "EventId")
                         .IsUnique()
-                        .HasFilter("[Status] = 0");
+                        .HasFilter("\"Status\" = 0");
 
                     b.ToTable("Reservations");
                 });
@@ -773,7 +773,7 @@ namespace SeatReservation.Data.Migrations
                             Id = 1,
                             Email = "admin@seat.com",
                             FullName = "Admin User",
-                            PasswordHash = "$2a$11$v.OuuWgV6t7yX5Scu2ZT8./AA.RjA8FB3NU2zrLh.XYrtyHJqXRvO",
+                            PasswordHash = "$2a$11$Glw/jykVdQIkiSneVGCBw.Yrkb4tI6f5PRdQTTQlTCSCPag4H/.s2",
                             Role = 1
                         },
                         new
@@ -781,7 +781,7 @@ namespace SeatReservation.Data.Migrations
                             Id = 2,
                             Email = "customer@seat.com",
                             FullName = "Demo Customer",
-                            PasswordHash = "$2a$11$6ilU9jcrsDjapKmIR0X16e5fQGbEIXV.USewi2E.pM.ydA8ipd7RW",
+                            PasswordHash = "$2a$11$ht6kl3sWWML/bvrBkW1xuOIeJTf8r2GxJ.42Pte54lP7BcyWIJfFa",
                             Role = 0
                         });
                 });

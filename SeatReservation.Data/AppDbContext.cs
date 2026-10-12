@@ -90,7 +90,7 @@ namespace SeatReservation.Data
                     .HasForeignKey(r => r.UserId)
                     .OnDelete(DeleteBehavior.Restrict);
                 e.HasIndex(r => new { r.SeatId, r.EventId })
-                    .HasFilter("[Status] = 0")
+                    .HasFilter("\"Status\" = 0")
                     .IsUnique();
             });
 

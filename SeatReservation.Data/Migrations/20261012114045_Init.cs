@@ -177,8 +177,8 @@ namespace SeatReservation.Data.Migrations
                 columns: new[] { "Id", "Email", "FullName", "PasswordHash", "Role" },
                 values: new object[,]
                 {
-                    { 1, "admin@seat.com", "Admin User", "$2a$11$v.OuuWgV6t7yX5Scu2ZT8./AA.RjA8FB3NU2zrLh.XYrtyHJqXRvO", 1 },
-                    { 2, "customer@seat.com", "Demo Customer", "$2a$11$6ilU9jcrsDjapKmIR0X16e5fQGbEIXV.USewi2E.pM.ydA8ipd7RW", 0 }
+                    { 1, "admin@seat.com", "Admin User", "$2a$11$Glw/jykVdQIkiSneVGCBw.Yrkb4tI6f5PRdQTTQlTCSCPag4H/.s2", 1 },
+                    { 2, "customer@seat.com", "Demo Customer", "$2a$11$ht6kl3sWWML/bvrBkW1xuOIeJTf8r2GxJ.42Pte54lP7BcyWIJfFa", 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -308,7 +308,7 @@ namespace SeatReservation.Data.Migrations
                 table: "Reservations",
                 columns: new[] { "SeatId", "EventId" },
                 unique: true,
-                filter: "[Status] = 0");
+                filter: "\"Status\" = 0");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reservations_UserId",
