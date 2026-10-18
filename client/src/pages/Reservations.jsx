@@ -49,75 +49,62 @@ export default function Reservations() {
 
   return (
     <div>
-      <h2>My Reservations</h2>
+      <div className="page-header">
+        <h2>My Reservations</h2>
+      </div>
 
       {message && (
-        <div style={{
-          padding: '10px 15px',
-          marginBottom: '15px',
-          borderRadius: '4px',
-          background: messageType === 'success' ? '#d4edda'
-            : messageType === 'conflict' ? '#fff3cd'
-            : '#f8d7da',
-          color: messageType === 'success' ? '#155724'
-            : messageType === 'conflict' ? '#856404'
-            : '#721c24',
-          border: `1px solid ${
-            messageType === 'success' ? '#c3e6cb'
-              : messageType === 'conflict' ? '#ffc107'
-              : '#f5c6cb'
-          }`
-        }}>
+        <div className={`alert ${
+          messageType === 'success' ? 'alert-success'
+            : messageType === 'conflict' ? 'alert-warning'
+            : 'alert-error'
+        }`}>
           {message}
         </div>
       )}
 
       {loading ? (
-        <p>Loading...</p>
+        <p className="loading-text">Loading...</p>
       ) : reservations.length === 0 ? (
-        <p>No reservations yet.</p>
+        <p className="empty-state">No reservations yet.</p>
       ) : (
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid #333', textAlign: 'left' }}>
-              <th style={{ padding: '8px' }}>Event</th>
-              <th style={{ padding: '8px' }}>Seat</th>
-              <th style={{ padding: '8px' }}>Date</th>
-              <th style={{ padding: '8px' }}>Status</th>
-              <th style={{ padding: '8px' }}></th>
-            </tr>
-          </thead>
-          <tbody>
-            {reservations.map((res) => (
-              <tr key={res.id} style={{ borderBottom: '1px solid #ddd' }}>
-                <td style={{ padding: '8px' }}>{res.eventTitle}</td>
-                <td style={{ padding: '8px' }}>{res.seatLabel}</td>
-                <td style={{ padding: '8px' }}>{new Date(res.reservedAt).toLocaleDateString()}</td>
-                <td style={{ padding: '8px' }}>
-                  <span style={{
-                    color: res.status === 0 ? 'green' : 'red',
-                    fontWeight: 'bold'
-                  }}>
-                    {res.status === 0 ? 'Active' : 'Cancelled'}
-                  </span>
-                </td>
-                <td style={{ padding: '8px' }}>
-                  {res.status === 0 && (
-                    <button
-                      onClick={() => handleCancel(res.id)}
-                      style={{ color: 'red', cursor: 'pointer' }}
-                    >
-                      Cancel
-                    </button>
-                  )}
-                </td>
+        <div className="table-wrapper">
+          <table className="res-table">
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Seat</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {reservations.map((res) => (
+                <tr key={res.id}>
+                  <td>{res.eventTitle}</td>
+                  <td>{res.seatLabel}</td>
+                  <td>{new Date(res.reservedAt).toLocaleDateString()}</td>
+                  <td>
+                    <span className={`badge ${res.status === 0 ? 'badge-active' : 'badge-cancelled'}`}>
+                      {res.status === 0 ? 'Active' : 'Cancelled'}
+                    </span>
+                  </td>
+                  <td>
+                    {res.status === 0 && (
+                      <button className="btn-danger" onClick={() => handleCancel(res.id)}>
+                        Cancel
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
 
-      <div style={{ marginTop: '15px', display: 'flex', gap: '10px', alignItems: 'center' }}>
+      <div className="pagination">
         <button onClick={() => setPage(page - 1)} disabled={page <= 1}>
           Previous
         </button>

@@ -36,49 +36,46 @@ export default function Events() {
 
   return (
     <div>
-      <h2>Events</h2>
+      <div className="page-header">
+        <h2>Events</h2>
+      </div>
 
-      <form onSubmit={handleSearch} style={{ marginBottom: '15px', display: 'flex', gap: '10px' }}>
+      <form onSubmit={handleSearch} className="search-bar">
         <input
           placeholder="Search events..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="btn-primary">Search</button>
       </form>
 
       {loading ? (
-        <p>Loading...</p>
+        <p className="loading-text">Loading...</p>
       ) : events.length === 0 ? (
-        <p>No events found.</p>
+        <p className="empty-state">No events found.</p>
       ) : (
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid #333', textAlign: 'left' }}>
-              <th style={{ padding: '8px' }}>Title</th>
-              <th style={{ padding: '8px' }}>Date</th>
-              <th style={{ padding: '8px' }}>Venue</th>
-              <th style={{ padding: '8px' }}>Available Seats</th>
-              <th style={{ padding: '8px' }}></th>
-            </tr>
-          </thead>
-          <tbody>
-            {events.map((ev) => (
-              <tr key={ev.id} style={{ borderBottom: '1px solid #ddd' }}>
-                <td style={{ padding: '8px' }}>{ev.title}</td>
-                <td style={{ padding: '8px' }}>{new Date(ev.date).toLocaleDateString()}</td>
-                <td style={{ padding: '8px' }}>{ev.venueName}</td>
-                <td style={{ padding: '8px' }}>{ev.availableSeats}</td>
-                <td style={{ padding: '8px' }}>
-                  <Link to={`/events/${ev.id}/seats`}>Reserve Seat</Link>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="event-list">
+          {events.map((ev) => (
+            <div key={ev.id} className="event-card">
+              <div className="event-card-body">
+                <div className="event-card-title">{ev.title}</div>
+                <div className="event-card-meta">
+                  <span>{new Date(ev.date).toLocaleDateString()}</span>
+                  <span>{ev.venueName}</span>
+                  <span>{ev.availableSeats} seats available</span>
+                </div>
+              </div>
+              <div className="event-card-action">
+                <Link to={`/events/${ev.id}/seats`} className="btn-primary">
+                  Reserve
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
 
-      <div style={{ marginTop: '15px', display: 'flex', gap: '10px', alignItems: 'center' }}>
+      <div className="pagination">
         <button onClick={() => setPage(page - 1)} disabled={page <= 1}>
           Previous
         </button>

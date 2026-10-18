@@ -31,50 +31,58 @@ export default function Login({ onLogin }) {
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: '40px auto' }}>
-      <h2>{isRegister ? 'Register' : 'Login'}</h2>
+    <div className="login-wrapper">
+      <div className="login-card">
+        <div className="login-card-header">
+          <h2>{isRegister ? 'Create Account' : 'Welcome Back'}</h2>
+          <p>{isRegister ? 'Sign up to reserve your seats' : 'Sign in to your account'}</p>
+        </div>
+        <div className="login-card-body">
+          {error && <div className="alert alert-error">{error}</div>}
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+          <form onSubmit={handleSubmit} className="login-form">
+            {isRegister && (
+              <input
+                name="fullName"
+                placeholder="Full Name"
+                value={form.fullName}
+                onChange={handleChange}
+                required
+              />
+            )}
+            <input
+              name="email"
+              type="email"
+              placeholder="Email"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={form.password}
+              onChange={handleChange}
+              required
+              minLength={6}
+            />
+            <button type="submit" className="btn-primary">
+              {isRegister ? 'Create Account' : 'Sign In'}
+            </button>
+          </form>
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        {isRegister && (
-          <input
-            name="fullName"
-            placeholder="Full Name"
-            value={form.fullName}
-            onChange={handleChange}
-            required
-          />
-        )}
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-          required
-          minLength={6}
-        />
-        <button type="submit">{isRegister ? 'Register' : 'Login'}</button>
-      </form>
-
-      <p style={{ marginTop: '15px' }}>
-        {isRegister ? 'Already have an account?' : "Don't have an account?"}{' '}
-        <button
-          onClick={() => { setIsRegister(!isRegister); setError(''); }}
-          style={{ background: 'none', border: 'none', color: 'blue', cursor: 'pointer', textDecoration: 'underline' }}
-        >
-          {isRegister ? 'Login' : 'Register'}
-        </button>
-      </p>
+          <p className="login-toggle">
+            {isRegister ? 'Already have an account?' : "Don't have an account?"}{' '}
+            <button
+              className="link-btn"
+              onClick={() => { setIsRegister(!isRegister); setError(''); }}
+            >
+              {isRegister ? 'Sign in' : 'Create one'}
+            </button>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

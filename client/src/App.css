@@ -1,0 +1,479 @@
+/* ---- Navbar ---- */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 24px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--nav-bg) 0%, var(--nav-bg-end) 100%);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--nav-text);
+  margin-right: 12px;
+  letter-spacing: -0.02em;
+}
+
+.nav-link {
+  color: var(--nav-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  transition: color var(--transition), background var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--nav-text);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-spacer {
+  flex: 1;
+}
+
+.nav-user {
+  color: var(--nav-muted);
+  font-size: 13px;
+  margin-right: 8px;
+}
+
+.nav-user strong {
+  color: var(--nav-text);
+  font-weight: 600;
+}
+
+.nav-btn-logout {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--nav-text);
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+}
+
+.nav-btn-logout:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ---- Page Container ---- */
+.page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+/* ---- Page Header ---- */
+.page-header {
+  margin-bottom: 24px;
+}
+
+/* ---- Alerts ---- */
+.alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  border: 1px solid;
+}
+
+.alert-success {
+  background: var(--success-bg);
+  color: var(--success);
+  border-color: var(--success-border);
+}
+
+.alert-warning {
+  background: var(--warning-bg);
+  color: var(--warning);
+  border-color: var(--warning-border);
+}
+
+.alert-error {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-color: var(--danger-border);
+}
+
+/* ---- Primary Button ---- */
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+  box-shadow: 0 2px 8px rgba(194, 98, 45, 0.25);
+}
+
+a.btn-primary {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+a.btn-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 2px 8px rgba(194, 98, 45, 0.25);
+  color: #fff;
+}
+
+/* ---- Danger Button ---- */
+.btn-danger {
+  background: none;
+  color: var(--danger);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+}
+
+.btn-danger:hover {
+  background: var(--danger-bg);
+}
+
+/* ---- Link Button ---- */
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: 500;
+  padding: 0;
+  font-size: inherit;
+}
+
+.link-btn:hover {
+  color: var(--primary-hover);
+}
+
+/* ---- Login Card ---- */
+.login-wrapper {
+  max-width: 420px;
+  margin: 60px auto;
+}
+
+.login-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.login-card-header {
+  background: linear-gradient(135deg, var(--nav-bg), var(--nav-bg-end));
+  padding: 28px 32px;
+}
+
+.login-card-header h2 {
+  color: var(--nav-text);
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.login-card-header p {
+  color: var(--nav-muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.login-card-body {
+  padding: 32px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-form .btn-primary {
+  margin-top: 4px;
+  padding: 12px;
+}
+
+.login-toggle {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* ---- Search Bar ---- */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.search-bar input {
+  flex: 1;
+  max-width: 320px;
+}
+
+/* ---- Event Cards ---- */
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.event-card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--primary);
+  box-shadow: var(--shadow-sm);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.event-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.event-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.event-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.event-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* ---- Pagination ---- */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.pagination span {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.pagination button {
+  background: var(--surface);
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+}
+
+.pagination button:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+/* ---- Back Link ---- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+}
+
+.back-link:hover {
+  color: var(--primary);
+}
+
+/* ---- Event Detail Card ---- */
+.event-detail {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.event-detail h2 {
+  margin-bottom: 8px;
+}
+
+.event-detail p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.event-detail p strong {
+  color: var(--text);
+}
+
+/* ---- Seat Grid ---- */
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: 10px;
+}
+
+.seat-btn {
+  background: var(--seat);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 14px 8px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.3;
+  transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+}
+
+.seat-btn:hover {
+  background: var(--seat-hover);
+  transform: scale(1.07);
+  box-shadow: var(--shadow-md);
+}
+
+.seat-btn small {
+  font-weight: 400;
+  font-size: 11px;
+  opacity: 0.85;
+  display: block;
+  margin-top: 2px;
+}
+
+/* ---- Reservations Table ---- */
+.table-wrapper {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.res-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.res-table thead {
+  background: var(--bg);
+}
+
+.res-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  border-bottom: 1.5px solid var(--border);
+}
+
+.res-table td {
+  padding: 14px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.res-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.res-table tbody tr {
+  transition: background var(--transition);
+}
+
+.res-table tbody tr:hover {
+  background: var(--primary-light);
+}
+
+/* ---- Badge ---- */
+.badge {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.badge-active {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.badge-cancelled {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+/* ---- Empty / Loading States ---- */
+.empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--text-secondary);
+}
+
+.loading-text {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .event-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .event-card-action {
+    align-self: flex-end;
+  }
+
+  .navbar {
+    padding: 0 16px;
+    gap: 4px;
+  }
+
+  .nav-link {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .page-container {
+    padding: 20px 16px;
+  }
+
+  .res-table th,
+  .res-table td {
+    padding: 10px 12px;
+  }
+}

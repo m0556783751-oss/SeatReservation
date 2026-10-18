@@ -15,17 +15,24 @@ function Nav({ user, onLogout }) {
   };
 
   return (
-    <nav style={{ padding: '10px 20px', background: '#333', color: '#fff', display: 'flex', gap: '15px', alignItems: 'center' }}>
-      <Link to="/events" style={{ color: '#fff', textDecoration: 'none' }}>Events</Link>
+    <nav className="navbar">
+      <span className="nav-brand">SeatRes</span>
+      <Link to="/events" className="nav-link">Events</Link>
       {user && (
         <>
-          <Link to="/reservations" style={{ color: '#fff', textDecoration: 'none' }}>My Reservations</Link>
-          <span style={{ marginLeft: 'auto' }}>{user.fullName} ({user.role === 1 ? 'Admin' : 'Customer'})</span>
-          <button onClick={handleLogout} style={{ cursor: 'pointer' }}>Logout</button>
+          <Link to="/reservations" className="nav-link">My Reservations</Link>
+          <div className="nav-spacer" />
+          <span className="nav-user">
+            <strong>{user.fullName}</strong> &middot; {user.role === 1 ? 'Admin' : 'Customer'}
+          </span>
+          <button onClick={handleLogout} className="nav-btn-logout">Logout</button>
         </>
       )}
       {!user && (
-        <Link to="/login" style={{ color: '#fff', textDecoration: 'none', marginLeft: 'auto' }}>Login</Link>
+        <>
+          <div className="nav-spacer" />
+          <Link to="/login" className="nav-link">Login</Link>
+        </>
       )}
     </nav>
   );
@@ -52,7 +59,7 @@ function App() {
   return (
     <BrowserRouter>
       <Nav user={user} onLogout={handleLogout} />
-      <div style={{ padding: '20px', maxWidth: '900px', margin: '0 auto' }}>
+      <div className="page-container">
         <Routes>
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/events" element={<Events />} />
