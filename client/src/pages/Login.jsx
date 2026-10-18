@@ -47,6 +47,7 @@ export default function Login({ onLogin }) {
                 placeholder="Full Name"
                 value={form.fullName}
                 onChange={handleChange}
+                autoComplete="name"
                 required
               />
             )}
@@ -56,6 +57,7 @@ export default function Login({ onLogin }) {
               placeholder="Email"
               value={form.email}
               onChange={handleChange}
+              autoComplete="email"
               required
             />
             <input
@@ -64,6 +66,7 @@ export default function Login({ onLogin }) {
               placeholder="Password"
               value={form.password}
               onChange={handleChange}
+              autoComplete={isRegister ? 'new-password' : 'current-password'}
               required
               minLength={6}
             />

@@ -16,8 +16,8 @@ export default function Events() {
       const params = { page, pageSize };
       if (search) params.search = search;
       const { data } = await api.get('/events', { params });
-      setEvents(data.items);
-      setTotalPages(data.totalPages);
+      setEvents(data.items || []);
+      setTotalPages(data.totalPages || 1);
     } catch {
       setEvents([]);
     }

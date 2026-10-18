@@ -14,8 +14,8 @@ export default function Reservations() {
     setLoading(true);
     try {
       const { data } = await api.get('/reservations', { params: { page, pageSize } });
-      setReservations(data.items);
-      setTotalPages(data.totalPages);
+      setReservations(data.items || []);
+      setTotalPages(data.totalPages || 1);
     } catch {
       setReservations([]);
     }
