@@ -26,7 +26,9 @@ export default function Login({ onLogin }) {
       onLogin(data.user, data.token);
       navigate('/events');
     } catch (err) {
-      setError(err.response?.data?.message || 'An error occurred');
+      const msg = err.response?.data?.message
+        || (err.response ? `Server error (${err.response.status})` : 'Cannot reach server');
+      setError(msg);
     }
   };
 
